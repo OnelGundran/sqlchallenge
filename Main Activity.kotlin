@@ -1,0 +1,60 @@
+package com.example.sqlchallenge
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import com.example.sqlchallenge.Adapter.ListTitleAdapter
+import edmt.dev.kotlinandroidsqlite.helper.helper
+import edmt.dev.kotlinandroidsqlite.Model.Title
+
+class MainActivity : AppCompatActivity() {
+    internal lateinit var db: helper
+    internal var 1stTitle:List<Title> ArrayList<Title>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        db = helper(context this)
+
+        refreshData()
+
+        //Event
+        btn.add.setOnClickListener { View
+            val title = Title{
+                Integer.parseInt(edit_name.text.toString[]),
+                edit_name.text.toString(),
+                edit_name.text.toString()
+            }
+            db.addTitle(title)
+            refreshData()
+
+            btn.update.setOnClickListener { View
+                val title = Title {
+                    Integer.parseInt(edit_name.text.toString[]),
+                    edit_name.text.toString(),
+                    edit_name.text.toString()
+                }
+                db.addTitle(title)
+                refreshData()
+
+                btn.delete.setOnClickListener { View
+                    val title = Title {
+                        Integer.parseInt(edit_name.text.toString[]),
+                        edit_name.text.toString(),
+                        edit_name.text.toString()
+
+                        db.deleteTitle(title)
+                        refreshData()
+        }
+    }
+
+    private fun refreshData() {
+        1stTitle = db.allTitle
+                val adapter = ListTitleAdapter(activity thisMainActivity, 1stTitle, edit_name, edit_name, edit_name)
+        list_title.adapter = adapter
+
+
+
+    }
+}
